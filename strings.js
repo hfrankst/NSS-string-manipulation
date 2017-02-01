@@ -1,62 +1,66 @@
 "use strict";
 
 console.log("Here we go...");
-var inputType = document.getElementsByClassName("userString");
+
 var buttonPress = document.getElementsByClassName("activate");
 
+
 //function to run the string functions upon 'enter' keypress
-function enterPress(event) {
-    if (event.keyCode === 13) {
-    	var testString = "";
-		reversal(testString);
-		alphabits(testString);
-		palindrome(testString);
+function enterPress(inputType) {
+    if (inputType.keyCode === 13) {
+		reversal(inputType);
+		alphabits(inputType);
+		palindrome(inputType);
     } 
+	// console.log(testString);		
+
 };
 
 //function to run the string functions on the button press
 
 function onClick(){
-	var testString = "";
-	reversal(testString);
-	alphabits(testString);
-	palindrome(testString);
+	var inputType = document.getElementById("userString").value;
+	reversal(inputType);
+	alphabits(inputType);
+	palindrome(inputType);
+
+	console.log("The input so far is.. ", inputType);
+
 };
 
 //function to determine if the user's input is a valid character, shows an alert if it's not
-	function letterOnly(event){
+	function letterOnly(inputType){
 	//watching for the key codes of all number keys
-	var x = event.keyCode;
-	if(event.keyCode >= 48 && event.keyCode <= 57){
+	var x = inputType.keyCode;
+	if(x >= 48 && x <= 57){
 		inputType.value = "";
 		alert("Please enter a string of letters!");
-		inputType.focus();
 	}
 }
 
 //STRING FUNCTIONS
 
 
-function reversal(str) {
+function reversal(inputType) {
 	//spliting the str up
-	var stringSplit = str.split('');
+	var stringSplit = inputType.split("");
 
 	//reversing the split string
 	var backwards = stringSplit.reverse();
 
 	//joining the reversed string
-	var backTogether = backwards.join('');
+	var backTogether = backwards.join(" ");
 
 	//give me the reversed string
-	return backTogether;
 	console.log(backTogether);
-}
+	return backTogether;
+ }
 
 
 
-function alphabits(str) {
+function alphabits(inputType) {
 	//split the string up 
-	var stringSplit = str.split('');
+	var stringSplit = inputType.toLowerCase().split('');
 
 	//sorting the split string
 	var alphabet = stringSplit.sort();
@@ -64,19 +68,21 @@ function alphabits(str) {
 	//joining the sorted string
 	var inOrder = alphabet.join('');
 
-	return inOrder;
 	console.log(inOrder);
+	return inOrder;
 }
 
 
 
-function palindrome(str) {
+function palindrome(inputType) {
 	//split, reverse, then join the string
 	// var newWord = ;
-	if(str === str.split("").reverse().join("")){//this isn't working and I am not sure why
-		alert("That's a palindrome!")
+	if(inputType === inputType.split('').reverse().join('')){//this isn't working and I am not sure why
+		alert("That's a palindrome!");
+		console.log("Input WAS a palindrome ", inputType)
 	} else {
 		alert("I'm not mad...just disappointed you didn't give me a palindrome.");
+		console.log("Input wasn't a palindrome ", inputType);
 	}
 }
 
