@@ -7,12 +7,15 @@ var buttonPress = document.getElementsByClassName("activate");
 
 //function to run the string functions upon 'enter' keypress
 function enterPress(inputType) {
+	// console.log(inputType, typeof inputType)
     if (inputType.keyCode === 13) {
-		reversal(inputType);
-		alphabits(inputType);
-		palindrome(inputType);
+	// console.log(inputType, typeof inputType)
+		
+		reversal(inputType.target.value);
+		alphabits(inputType.target.value);
+		palindrome(inputType.target.value);
     } 
-	// console.log(testString);		
+	// console.log(inputType);		
 
 };
 
@@ -43,13 +46,14 @@ function onClick(){
 
 function reversal(inputType) {
 	//spliting the str up
-	var stringSplit = inputType.split("");
+	console.log(inputType, typeof inputType)
+	var stringSplit = inputType.split('');
 
 	//reversing the split string
 	var backwards = stringSplit.reverse();
 
 	//joining the reversed string
-	var backTogether = backwards.join(" ");
+	var backTogether = backwards.join('');
 
 	//give me the reversed string
 	console.log(backTogether);
