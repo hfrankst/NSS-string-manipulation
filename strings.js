@@ -6,14 +6,14 @@ var buttonPress = document.getElementsByClassName("activate");
 
 
 //function to run the string functions upon 'enter' keypress
-function enterPress(inputType) {
+function enterPress(event) {
 	// console.log(inputType, typeof inputType)
-    if (inputType.keyCode === 13) {
+    if (event.keyCode === 13) {
 	// console.log(inputType, typeof inputType)
 		
-		reversal(inputType.target.value);
-		alphabits(inputType.target.value);
-		palindrome(inputType.target.value);
+		reversal(event.target.value);
+		alphabits(event.target.value);
+		palindrome(event.target.value);
     } 
 	// console.log(inputType);		
 
